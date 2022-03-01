@@ -1,22 +1,22 @@
-const a = new Promise(function(resolve, reject) {
-    const randomNumber = Math.random()*100;
-    console.log("Random number is ", randomNumber);
-    if(randomNumber < 50){
-        (resolve('Number less than 50.'));
-    }
-    else{
-        reject("Number greater than 50");
-    }
-});
-a
-    // handle success
-    .then(message => {
-        console.log("Resolved! " + message);
-    })
-    // handle failure
-    .catch(message => {
-        console.log("Rejected! " + message);
-    })
+// const a = new Promise(function(resolve, reject) {
+//     const randomNumber = Math.random()*100;
+//     console.log("Random number is ", randomNumber);
+//     if(randomNumber < 50){
+//         (resolve('Number less than 50.'));
+//     }
+//     else{
+//         reject("Number greater than 50");
+//     }
+// });
+// a
+    // // handle success
+    // .then(message => {
+    //     console.log("Resolved! " + message);
+    // })
+    // // handle failure
+    // .catch(message => {
+    //     console.log("Rejected! " + message);
+    // })
 
 // PROMISE CHANING
 // Execute two or more related  operations, 
@@ -29,10 +29,10 @@ a
 //     }, 3000);
 // });
 // p
-    // .then((result) => {
-    //     console.log(result);    //10
-    //     return result * 2;
-    // })
+//     .then((result) => {
+//         console.log(result);    //10
+//         return result * 2;
+//     })
     // .then((result) => {
     //     console.log(result);    //20
     //     return result * 3;
@@ -132,14 +132,14 @@ a
 //  promises in the iterable has resolved or rejected. 
 
 // wait "milliseconds" milliseconds, then resolve with "value"
-// function resolve(value, milliseconds) {
-//     return new Promise(resolve => setTimeout(() => resolve(value), milliseconds));
-// }
+function resolve(value, milliseconds) {
+    return new Promise(resolve => setTimeout(() => resolve(value), milliseconds));
+}
 
-// // wait "milliseconds" milliseconds, then reject with "reason"
-// function reject(reason, milliseconds) {
-//     return new Promise((_, reject) => setTimeout(() => reject(reason), milliseconds));
-// }
+// wait "milliseconds" milliseconds, then reject with "reason"
+function reject(reason, milliseconds) {
+    return new Promise((_, reject) => setTimeout(() => reject(reason), milliseconds));
+}
 
 // Promise.race([
 //     resolve(1, 5000),
@@ -187,3 +187,14 @@ a
 //     console.log(error);
 // });
 
+// const promise = new Promise((resolve, reject) => {
+//     reject(Error('Some error occurred'));
+//   })
+//   promise.catch(error => console.log(error.message));
+//   promise.catch(error => console.log(error.message));
+
+  const promise = new Promise((resolve, reject) => {
+    reject(Error('Some Error Occurred'));
+  })
+  .catch(error => console.log(error))
+  .then(error => console.log(error));
